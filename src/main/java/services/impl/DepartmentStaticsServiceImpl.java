@@ -34,7 +34,7 @@ public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
                     professors++;
                     break;
                 default:
-                    throw new RuntimeException("Lector without degree"+ lector.getName());
+                    throw new RuntimeException("Lector without degree" + lector.getName());
             }
         }
         System.out.println("assistans - " + assistants + ".\n"

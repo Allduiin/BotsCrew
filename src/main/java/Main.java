@@ -8,6 +8,7 @@ import services.AddLectorService;
 import services.AverageSalaryForDepartmentService;
 import services.CountOfEmployeeService;
 import services.DepartmentStaticsService;
+import services.GlobalSearchService;
 import services.HeadOfDepartmentService;
 
 public class Main {
@@ -54,5 +55,11 @@ public class Main {
         CountOfEmployeeService countOfEmployeeService =
                 context.getBean(CountOfEmployeeService.class);
         countOfEmployeeService.takeEmployeeCount(department.getName());
+
+        GlobalSearchService globalSearchService =
+                context.getBean(GlobalSearchService.class);
+        globalSearchService.globalSearch("len");
+        globalSearchService.globalSearch("Bogdan");
+        globalSearchService.globalSearch("enko");
     }
 }
