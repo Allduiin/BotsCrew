@@ -5,6 +5,7 @@ import model.Lector;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.AddDepartmentService;
 import services.AddLectorService;
+import services.DepartmentStaticsService;
 import services.HeadOfDepartmentService;
 
 public class Main {
@@ -39,5 +40,9 @@ public class Main {
                 context.getBean(HeadOfDepartmentService.class);
 
         headOfDepartmentService.takeHeadOfDepartment(department.getName());
+
+        DepartmentStaticsService departmentStaticsService =
+                context.getBean(DepartmentStaticsService.class);
+        departmentStaticsService.takeDepartmentStatistics(department.getName());
     }
 }
