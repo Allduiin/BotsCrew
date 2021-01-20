@@ -5,11 +5,6 @@ import model.Lector;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.AddDepartmentService;
 import services.AddLectorService;
-import services.AverageSalaryForDepartmentService;
-import services.CountOfEmployeeService;
-import services.DepartmentStaticsService;
-import services.GlobalSearchService;
-import services.HeadOfDepartmentService;
 import services.MainService;
 
 public class Main {
