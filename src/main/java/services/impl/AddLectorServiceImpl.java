@@ -1,13 +1,18 @@
 package services.impl;
 
 import dao.LectorDao;
-import dao.impl.LectorDaoImpl;
 import model.Lector;
+import org.springframework.stereotype.Service;
 import services.AddLectorService;
 
+@Service
 public class AddLectorServiceImpl implements AddLectorService {
 
-    private LectorDao lectorDao = new LectorDaoImpl();
+    private final LectorDao lectorDao;
+
+    public AddLectorServiceImpl(LectorDao lectorDao) {
+        this.lectorDao = lectorDao;
+    }
 
     @Override
     public Lector add(Lector lector) {

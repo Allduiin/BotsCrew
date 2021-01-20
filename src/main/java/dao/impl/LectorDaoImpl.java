@@ -5,8 +5,10 @@ import exceptions.DataProcessingException;
 import model.Lector;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 import util.HibernateUtil;
 
+@Repository
 public class LectorDaoImpl implements LectorDao {
     @Override
     public Lector add(Lector lector) {
