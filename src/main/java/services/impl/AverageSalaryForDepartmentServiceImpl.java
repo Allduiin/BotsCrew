@@ -23,6 +23,7 @@ public class AverageSalaryForDepartmentServiceImpl implements AverageSalaryForDe
         for (Lector lector: lectors) {
             sum += lector.getSalary();
         }
-        System.out.println("The average salary of" + departmentName + " is " + (double) sum/lectors.size());
+        System.out.println("The average salary of" + departmentName
+                + " is " + (double) sum / lectors.size());
     }
 }
