@@ -60,7 +60,7 @@ public class MainServiceImpl implements MainService {
             headOfDepartmentService.takeHeadOfDepartment(command
                     .substring(HEAD_DEPARTMENT_COMMAND.length()));
         } else if (command.startsWith("Show ")
-                && command.endsWith(" statistics.")) {
+                && command.endsWith(" statistics")) {
             departmentStaticsService.takeDepartmentStatistics(command
                     .substring(STATISTICS_COMMAND[0].length(),
                             command.length() - STATISTICS_COMMAND[1].length()));
