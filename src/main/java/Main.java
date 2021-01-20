@@ -5,6 +5,7 @@ import model.Lector;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.AddDepartmentService;
 import services.AddLectorService;
+import services.AverageSalaryForDepartmentService;
 import services.DepartmentStaticsService;
 import services.HeadOfDepartmentService;
 
@@ -23,8 +24,8 @@ public class Main {
         System.out.println(lector1);
 
         Lector lector2 = new Lector();
-        lector2.setDegree(Lector.Degree.PROFESSOR);
-        lector2.setSalary(2000L);
+        lector2.setDegree(Lector.Degree.ASSISTANT);
+        lector2.setSalary(1000L);
         lector2.setName("Olexandr Kovalenko");
         addLectorService.add(lector2);
         System.out.println(lector2);
@@ -44,5 +45,9 @@ public class Main {
         DepartmentStaticsService departmentStaticsService =
                 context.getBean(DepartmentStaticsService.class);
         departmentStaticsService.takeDepartmentStatistics(department.getName());
+
+        AverageSalaryForDepartmentService averageSalaryForDepartmentService =
+                context.getBean(AverageSalaryForDepartmentService.class);
+        averageSalaryForDepartmentService.takeAverageSalary(department.getName());
     }
 }
