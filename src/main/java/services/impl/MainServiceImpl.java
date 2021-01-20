@@ -9,7 +9,7 @@ import services.HeadOfDepartmentService;
 import services.MainService;
 
 public class MainServiceImpl implements MainService {
-    private static final String STATISTICS_COMMAND = "Show statistics.";
+    private static final String[] STATISTICS_COMMAND = {"Show "," statistics"};
     private static final String SALARY_COMMAND = "Show the average salary for the department ";
     private static final String COUNT_EMPLOYEE_COMMAND = "Show count of employee for ";
     private static final String SEARCH_COMMAND = "Global search by ";
@@ -33,10 +33,10 @@ public class MainServiceImpl implements MainService {
         System.out.println("Welcome to university bot service\n"
                 + "here you can ask questions like:\n"
                 + "Who is head of department {department_name}\n"
-                + "Show {department_name} statistics.\n"
-                + "Show the average salary for the department {department_name}.\n"
+                + "Show {department_name} statistics\n"
+                + "Show the average salary for the department {department_name}\n"
                 + "Show count of employee for {department_name}\n"
-                + "Global search by {template}.\n"
+                + "Global search by {template}\n"
                 + "exit\n");
         try (Scanner scanner = new Scanner(System.in)) {
             while (exitConstant == 0) {
@@ -53,7 +53,8 @@ public class MainServiceImpl implements MainService {
         } else if (command.startsWith("Show ")
                 && command.endsWith(" statistics.")) {
             departmentStaticsService.takeDepartmentStatistics(command
-                    .substring("Show ".length(), command.length() - " statistics.".length()));
+                    .substring(STATISTICS_COMMAND[0].length(),
+                            command.length() - STATISTICS_COMMAND[1].length()));
         } else if (command.startsWith(SALARY_COMMAND)) {
             averageSalaryForDepartmentService.takeAverageSalary(command
                     .substring(SALARY_COMMAND.length()));
