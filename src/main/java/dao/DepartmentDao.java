@@ -2,6 +2,6 @@ package dao;
 
 import model.Department;
 
-public interface DepartmentDao extends GenericDao<Department> {
+public interface DepartmentDao extends EntityManager<Department> {
 
 }
