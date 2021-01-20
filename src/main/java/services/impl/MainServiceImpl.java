@@ -1,6 +1,7 @@
 package services.impl;
 
 import java.util.Scanner;
+import org.springframework.stereotype.Service;
 import services.AverageSalaryForDepartmentService;
 import services.CountOfEmployeeService;
 import services.DepartmentStaticsService;
@@ -8,6 +9,7 @@ import services.GlobalSearchService;
 import services.HeadOfDepartmentService;
 import services.MainService;
 
+@Service
 public class MainServiceImpl implements MainService {
     private static final String[] STATISTICS_COMMAND = {"Show "," statistics"};
     private static final String SALARY_COMMAND = "Show the average salary for the department ";
@@ -17,16 +19,23 @@ public class MainServiceImpl implements MainService {
     private static final String HEAD_DEPARTMENT_COMMAND
             = "Who is head of department ";
     private static Byte exitConstant = 0;
-    private final AverageSalaryForDepartmentService averageSalaryForDepartmentService
-            = new AverageSalaryForDepartmentServiceImpl();
-    private final CountOfEmployeeService countOfEmployeeService
-            = new CountOfEmployeeServiceImpl();
-    private final DepartmentStaticsService departmentStaticsService
-            = new DepartmentStaticsServiceImpl();
-    private final GlobalSearchService globalSearchService
-            = new GlobalSearchServiceImpl();
-    private final HeadOfDepartmentService headOfDepartmentService
-            = new HeadOfDepartmentServiceImpl();
+    private final AverageSalaryForDepartmentService averageSalaryForDepartmentService;
+    private final CountOfEmployeeService countOfEmployeeService;
+    private final DepartmentStaticsService departmentStaticsService;
+    private final GlobalSearchService globalSearchService;
+    private final HeadOfDepartmentService headOfDepartmentService;
+
+    public MainServiceImpl(AverageSalaryForDepartmentService averageSalaryForDepartmentService,
+                           CountOfEmployeeService countOfEmployeeService,
+                           DepartmentStaticsService departmentStaticsService,
+                           GlobalSearchService globalSearchService,
+                           HeadOfDepartmentService headOfDepartmentService) {
+        this.averageSalaryForDepartmentService = averageSalaryForDepartmentService;
+        this.countOfEmployeeService = countOfEmployeeService;
+        this.departmentStaticsService = departmentStaticsService;
+        this.globalSearchService = globalSearchService;
+        this.headOfDepartmentService = headOfDepartmentService;
+    }
 
     @Override
     public void start() {

@@ -5,8 +5,10 @@ import exceptions.DataProcessingException;
 import model.Department;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 import util.HibernateUtil;
 
+@Repository
 public class DepartmentDaoImpl implements DepartmentDao {
     @Override
     public Department add(Department department) {
