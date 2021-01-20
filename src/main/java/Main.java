@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import services.AddDepartmentService;
 import services.AddLectorService;
 import services.AverageSalaryForDepartmentService;
+import services.CountOfEmployeeService;
 import services.DepartmentStaticsService;
 import services.HeadOfDepartmentService;
 
@@ -49,5 +50,9 @@ public class Main {
         AverageSalaryForDepartmentService averageSalaryForDepartmentService =
                 context.getBean(AverageSalaryForDepartmentService.class);
         averageSalaryForDepartmentService.takeAverageSalary(department.getName());
+
+        CountOfEmployeeService countOfEmployeeService =
+                context.getBean(CountOfEmployeeService.class);
+        countOfEmployeeService.takeEmployeeCount(department.getName());
     }
 }
