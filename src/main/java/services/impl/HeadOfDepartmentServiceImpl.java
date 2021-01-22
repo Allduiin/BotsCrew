@@ -18,12 +18,11 @@ public class HeadOfDepartmentServiceImpl implements HeadOfDepartmentService {
     }
 
     @Override
-    public void takeHeadOfDepartment(String departmentName) {
+    public String takeHeadOfDepartment(String departmentName) {
         Department department = departmentDao.getByName(departmentName);
         if (department == null) {
-            incorrectDataService.sayIncorrectDataRead(departmentName);
-            return;
+            return incorrectDataService.sayIncorrectDataRead(departmentName);
         }
-        System.out.println(departmentDao.getByName(departmentName).getHeadOfDepartment().getName());
+        return (departmentDao.getByName(departmentName).getHeadOfDepartment().getName());
     }
 }

@@ -20,17 +20,16 @@ public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
     }
 
     @Override
-    public void takeDepartmentStatistics(String departmentName) {
+    public String takeDepartmentStatistics(String departmentName) {
         int assistants = 0;
         int associateProfessors = 0;
         int professors = 0;
         Department department = departmentDao.getByName(departmentName);
         if (department == null) {
-            incorrectDataService.sayIncorrectDataRead(departmentName);
-            return;
+            return incorrectDataService.sayIncorrectDataRead(departmentName);
         }
         List<Lector> lectors = department.getLectors();
-        for (Lector lector: lectors) {
+        for (Lector lector : lectors) {
             switch (lector.getDegree()) {
                 case ASSISTANT:
                     assistants++;
@@ -45,7 +44,7 @@ public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
                     throw new RuntimeException("Lector without degree" + lector.getName());
             }
         }
-        System.out.println("assistans - " + assistants + ".\n"
+        return ("assistants - " + assistants + "\n"
                 + "associate professors - " + associateProfessors + "\n"
                 + "professors - " + professors + "\n");
     }
