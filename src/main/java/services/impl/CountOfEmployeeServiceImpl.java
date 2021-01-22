@@ -23,7 +23,7 @@ public class CountOfEmployeeServiceImpl implements CountOfEmployeeService {
         if (department == null) {
             return incorrectDataService.sayIncorrectDataRead(departmentName);
         }
-        if (department.getLectors() == null ) {
+        if (department.getLectors() == null) {
             return "0";
         }
         return (department.getLectors().size() + "");
