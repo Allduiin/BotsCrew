@@ -84,7 +84,8 @@ public class MainServiceImpl implements MainService {
                     + "Global search by {template}\n"
                     + "exit\n");
         } else {
-            System.out.println("Incorrect command please try again, you can also use command '/help'");
+            System.out.println("Incorrect command please try again, "
+                    + "you can also use command '/help'");
         }
     }
 }
