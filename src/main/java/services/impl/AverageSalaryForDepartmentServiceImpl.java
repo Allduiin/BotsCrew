@@ -30,7 +30,7 @@ public class AverageSalaryForDepartmentServiceImpl implements AverageSalaryForDe
         for (Lector lector: lectors) {
             sum += lector.getSalary();
         }
-        return ("The average salary of" + departmentName
+        return ("The average salary of " + departmentName
                 + " is " + (double) sum / lectors.size());
     }
 }

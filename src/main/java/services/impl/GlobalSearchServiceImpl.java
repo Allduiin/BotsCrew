@@ -17,7 +17,7 @@ public class GlobalSearchServiceImpl implements GlobalSearchService {
     public String globalSearch(String template) {
         List<String> templates = lectorDao.globalSearch(template);
         if (templates.size() == 0) {
-            return ("No one was find with characters " + template);
+            return ("No one was find by search '" + template + "'");
         }
         String result = templates.toString();
         return (result.substring(1, result.length() - 1));

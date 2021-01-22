@@ -44,7 +44,7 @@ public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
                     throw new RuntimeException("Lector without degree" + lector.getName());
             }
         }
-        return ("assistans - " + assistants + ".\n"
+        return ("assistants - " + assistants + "\n"
                 + "associate professors - " + associateProfessors + "\n"
                 + "professors - " + professors + "\n");
     }
