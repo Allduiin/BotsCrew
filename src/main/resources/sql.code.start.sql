@@ -1,1 +1,0 @@
-CREATE SCHEMA `bots_crew` DEFAULT CHARACTER SET utf8 ;
