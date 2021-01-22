@@ -1,6 +1,7 @@
 package services.impl;
 
 import dao.LectorDao;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import services.GlobalSearchService;
 
@@ -14,6 +15,12 @@ public class GlobalSearchServiceImpl implements GlobalSearchService {
 
     @Override
     public void globalSearch(String template) {
-        System.out.println(lectorDao.globalSearch(template));
+        List<String> templates = lectorDao.globalSearch(template);
+        if (templates.size() == 0) {
+            System.out.println("No one was find with characters " + template);
+            return;
+        }
+        String result = templates.toString();
+        System.out.println(result.substring(1, result.length() - 1));
     }
 }
