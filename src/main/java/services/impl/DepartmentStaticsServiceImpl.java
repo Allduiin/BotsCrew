@@ -6,13 +6,17 @@ import model.Department;
 import model.Lector;
 import org.springframework.stereotype.Service;
 import services.DepartmentStaticsService;
+import services.IncorrectDataService;
 
 @Service
 public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
     private final DepartmentDao departmentDao;
+    private final IncorrectDataService incorrectDataService;
 
-    public DepartmentStaticsServiceImpl(DepartmentDao departmentDao) {
+    public DepartmentStaticsServiceImpl(DepartmentDao departmentDao,
+                                        IncorrectDataService incorrectDataService) {
         this.departmentDao = departmentDao;
+        this.incorrectDataService = incorrectDataService;
     }
 
     @Override
@@ -21,6 +25,10 @@ public class DepartmentStaticsServiceImpl implements DepartmentStaticsService {
         int associateProfessors = 0;
         int professors = 0;
         Department department = departmentDao.getByName(departmentName);
+        if (department == null) {
+            incorrectDataService.sayIncorrectDataRead(departmentName);
+            return;
+        }
         List<Lector> lectors = department.getLectors();
         for (Lector lector: lectors) {
             switch (lector.getDegree()) {
