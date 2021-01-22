@@ -1,5 +1,5 @@
 package services;
 
 public interface GlobalSearchService {
-    void globalSearch(String template);
+    String globalSearch(String template);
 }

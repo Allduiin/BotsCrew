@@ -18,12 +18,11 @@ public class CountOfEmployeeServiceImpl implements CountOfEmployeeService {
     }
 
     @Override
-    public void takeEmployeeCount(String departmentName) {
+    public String takeEmployeeCount(String departmentName) {
         Department department = departmentDao.getByName(departmentName);
         if (department == null) {
-            incorrectDataService.sayIncorrectDataRead(departmentName);
-            return;
+            return incorrectDataService.sayIncorrectDataRead(departmentName);
         }
-        System.out.println(department.getLectors().size());
+        return (department.getLectors().size() + "");
     }
 }

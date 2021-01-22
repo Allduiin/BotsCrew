@@ -20,18 +20,17 @@ public class AverageSalaryForDepartmentServiceImpl implements AverageSalaryForDe
     }
 
     @Override
-    public void takeAverageSalary(String departmentName) {
+    public String takeAverageSalary(String departmentName) {
         Department department = departmentDao.getByName(departmentName);
         if (department == null) {
-            incorrectDataService.sayIncorrectDataRead(departmentName);
-            return;
+            return incorrectDataService.sayIncorrectDataRead(departmentName);
         }
         int sum = 0;
         List<Lector> lectors = department.getLectors();
         for (Lector lector: lectors) {
             sum += lector.getSalary();
         }
-        System.out.println("The average salary of" + departmentName
+        return ("The average salary of" + departmentName
                 + " is " + (double) sum / lectors.size());
     }
 }

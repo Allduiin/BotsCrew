@@ -15,7 +15,7 @@ public class MainServiceImpl implements MainService {
     private static final String SALARY_COMMAND = "Show the average salary for the department ";
     private static final String COUNT_EMPLOYEE_COMMAND = "Show count of employee for ";
     private static final String SEARCH_COMMAND = "Global search by ";
-    private static final String EXIT_COMMAND = "exit";
+    private static final String EXIT_COMMAND = "/exit";
     private static final String HEAD_DEPARTMENT_COMMAND
             = "Who is head of department ";
     private static Byte exitConstant = 0;
@@ -39,14 +39,16 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public void start() {
-        System.out.println("Welcome to university bot service\n"
-                + "here you can ask questions like:\n"
+        System.out.println("Welcome to university bot service, on the test data you there are\n"
+                + "one department 'Math_Department' and two templates \n"
+                + "'Bogdan Shevchenko' and 'Olexandr Kovalenko'\n"
+                + "here you can ask commands like:\n"
                 + "Who is head of department {department_name}\n"
                 + "Show {department_name} statistics\n"
                 + "Show the average salary for the department {department_name}\n"
                 + "Show count of employee for {department_name}\n"
                 + "Global search by {template}\n"
-                + "exit\n");
+                + "/exit\n");
         try (Scanner scanner = new Scanner(System.in)) {
             while (exitConstant == 0) {
                 releaseUserCommand(scanner.nextLine());
@@ -57,21 +59,22 @@ public class MainServiceImpl implements MainService {
     @Override
     public void releaseUserCommand(String command) {
         if (command.startsWith(HEAD_DEPARTMENT_COMMAND)) {
-            headOfDepartmentService.takeHeadOfDepartment(command
-                    .substring(HEAD_DEPARTMENT_COMMAND.length()));
+            System.out.println(headOfDepartmentService.takeHeadOfDepartment(command
+                    .substring(HEAD_DEPARTMENT_COMMAND.length())));
         } else if (command.startsWith("Show ")
                 && command.endsWith(" statistics")) {
-            departmentStaticsService.takeDepartmentStatistics(command
+            System.out.println(departmentStaticsService.takeDepartmentStatistics(command
                     .substring(STATISTICS_COMMAND[0].length(),
-                            command.length() - STATISTICS_COMMAND[1].length()));
+                            command.length() - STATISTICS_COMMAND[1].length())));
         } else if (command.startsWith(SALARY_COMMAND)) {
-            averageSalaryForDepartmentService.takeAverageSalary(command
-                    .substring(SALARY_COMMAND.length()));
+            System.out.println(averageSalaryForDepartmentService.takeAverageSalary(command
+                    .substring(SALARY_COMMAND.length())));
         } else if (command.startsWith(COUNT_EMPLOYEE_COMMAND)) {
-            countOfEmployeeService.takeEmployeeCount(command
-                    .substring(COUNT_EMPLOYEE_COMMAND.length()));
+            System.out.println(countOfEmployeeService.takeEmployeeCount(command
+                    .substring(COUNT_EMPLOYEE_COMMAND.length())));
         } else if (command.startsWith(SEARCH_COMMAND)) {
-            globalSearchService.globalSearch(command.substring(SEARCH_COMMAND.length()));
+            System.out.println(globalSearchService
+                    .globalSearch(command.substring(SEARCH_COMMAND.length())));
         } else if (command.equals(EXIT_COMMAND)) {
             System.out.println("Thanks for using our bot");
             exitConstant = 1;

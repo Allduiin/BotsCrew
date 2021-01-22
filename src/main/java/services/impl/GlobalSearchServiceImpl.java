@@ -14,13 +14,12 @@ public class GlobalSearchServiceImpl implements GlobalSearchService {
     }
 
     @Override
-    public void globalSearch(String template) {
+    public String globalSearch(String template) {
         List<String> templates = lectorDao.globalSearch(template);
         if (templates.size() == 0) {
-            System.out.println("No one was find with characters " + template);
-            return;
+            return ("No one was find with characters " + template);
         }
         String result = templates.toString();
-        System.out.println(result.substring(1, result.length() - 1));
+        return (result.substring(1, result.length() - 1));
     }
 }
